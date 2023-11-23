@@ -17,7 +17,7 @@ public class Cell
     */
     public T changeTile<T>(Cell old) where T : Cell, new()
     {
-        T newTile = new T();
+        T newTile = new();
         newTile.Position = old.Position;
         return newTile;
         //jag returnar så att jag kan byta ut den I listan med alla celler

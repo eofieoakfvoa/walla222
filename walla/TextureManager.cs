@@ -11,7 +11,7 @@ public class TextureManager
     Detta är bra eftersom jag slipper göra massa Raylib.LoadTexture() som tar mycket performance, och nu bara behöver göra en gång
     Dictionaries är också i O(1) tillskillnad från listor som är i O(N), där O(N) betyder att den kollar baserat på storleken på listan tillskillad från 0(1) som fungerar som en Hashmap
     */
-    Dictionary<string, Texture2D> TexturesList = new Dictionary<string,Texture2D>();
+    Dictionary<string, Texture2D> TexturesList = new();
     public Texture2D LoadTexture(string fileName)
     {
 

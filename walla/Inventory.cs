@@ -6,8 +6,8 @@ men två blev lättare
 */
 public class Inventory
 {
-    public Dictionary<string, items> itemsInInventory = new Dictionary<string, items>();
-    public Dictionary<int, string> InventorySlots = new Dictionary<int, string>();
+    public Dictionary<string, items> itemsInInventory = new();
+    public Dictionary<int, string> InventorySlots = new();
     int inventoryLength = 6;
     public Inventory()
     {

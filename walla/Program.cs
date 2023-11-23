@@ -6,10 +6,10 @@ Program.cs filen är där jag gör så att funktioner används när de ska anvä
 */
 bool walking;
 
-Player Character = new Player();
+Player Character = new();
 
-Vector2 previousMousePos = new Vector2(0, 0);
-Cell selectedGrid = new Cell();
+Vector2 previousMousePos = new(0, 0);
+Cell selectedGrid = new();
 int selectedGridIndex = 1;
 bool gridIsSelected = false;
 
@@ -24,31 +24,15 @@ int SelectedInventory = 1;
 
 string Scene = "Start";
 
-Seed See1d = new Seed();
+Seed See1d = new();
 
 Settings.Init();
 Map.Render();
-while (Raylib.WindowShouldClose() == false)
+while (!Raylib.WindowShouldClose())
 {
     Player.MouseCursorPosition();
     if (Scene == "Game")
     {
-        if (Raylib.IsKeyDown((KeyboardKey)Settings.walkUp))
-        {
-            Player.Movement("Verticle", -4);
-        }
-        if (Raylib.IsKeyDown((KeyboardKey)Settings.walkDown))
-        {
-            Player.Movement("Verticle", 4);
-        }
-        if (Raylib.IsKeyDown((KeyboardKey)Settings.walkLeft))
-        {
-            Player.Movement("Horizontal", -4);
-        }
-        if (Raylib.IsKeyDown((KeyboardKey)Settings.walkRight))
-        {
-            Player.Movement("Horizontal", 4);
-        }
         for (var i = 49; i <= 57; i++)
         {
             if (Raylib.IsKeyPressed((KeyboardKey)i))
@@ -69,7 +53,6 @@ while (Raylib.WindowShouldClose() == false)
 
     }
 
-    //Walking är ett dåligt variable namn, det är till för att se ifall personen interagerar med spelet, som sparar på resurser
     if (Raylib.IsKeyDown(KeyboardKey.KEY_W) || Raylib.IsKeyDown(KeyboardKey.KEY_A) || Raylib.IsKeyDown(KeyboardKey.KEY_S) || Raylib.IsKeyDown(KeyboardKey.KEY_D) || Vector2.Distance(Player.MousePosition, previousMousePos) > 0 || Raylib.IsKeyReleased(KeyboardKey.KEY_E))
     {
         walking = true;
@@ -105,6 +88,7 @@ while (Raylib.WindowShouldClose() == false)
     if (Scene == "Game")
     {
         Raylib.BeginMode2D(Camera.camera);
+        Player.GetMovement(true);
         if (gridIsSelected == true && Raylib.IsKeyReleased(KeyboardKey.KEY_E))
         {
                 if (InventoryManager.InventorySlots[SelectedInventory] == "Empty")
@@ -113,7 +97,7 @@ while (Raylib.WindowShouldClose() == false)
                 else
                 {
                     items ItemInHold = InventoryManager.itemsInInventory[InventoryManager.InventorySlots[SelectedInventory]];
-                    Cell Newtile = new Cell();
+                    Cell Newtile = new();
 
                     if (SelectedInventory == 0)
                     {
@@ -129,7 +113,7 @@ while (Raylib.WindowShouldClose() == false)
                     {
                         Newtile = selectedGrid.changeTile<Grass>(selectedGrid);
                     }
-                    Map.gridcells[selectedGridIndex] = Newtile;
+                    Map.gridCellsList[selectedGridIndex] = Newtile;
                     //här byter jag ut cellen mot den nya
                 }
 
@@ -138,7 +122,7 @@ while (Raylib.WindowShouldClose() == false)
 
         // Rita ut Celler
 
-        foreach (var item in Map.gridcells)
+        foreach (var item in Map.gridCellsList)
         {
             //Item är varje cell
             Color color = Color.WHITE;
@@ -187,8 +171,6 @@ while (Raylib.WindowShouldClose() == false)
                 itemIndex = 0;
             }
         }
-
-
     }
 
 
