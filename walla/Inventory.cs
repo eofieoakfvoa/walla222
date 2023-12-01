@@ -22,7 +22,7 @@ public class Inventory
     här kollar jag ifall itemet finns i dictionary ifall den finns så kollar den ifall den är stackable och lägger till ifall möjligt
     ifall den inte är med så läggs den till i dictionariet
     */
-    public void addToInvetory(string item, items ItemData, int Amount){
+    public void AddToInvetory(string item, items ItemData, int Amount){
         if (itemsInInventory.ContainsKey(item))
         {
             if (ItemData.Stackable == true)
@@ -33,7 +33,7 @@ public class Inventory
         else
         {
 
-            int UsableSlot = findFirstEmptySlot();  
+            int UsableSlot = FindFirstEmptySlot();  
             InventorySlots.Remove(UsableSlot);
             InventorySlots.Add(UsableSlot, ItemData.Name);
             itemsInInventory.Add(ItemData.Name, ItemData);
@@ -51,7 +51,7 @@ public class Inventory
     här har jag en for loop som kollar i inventoriet för att hitta den första slot i inventoriet som är tomt,
     fungerar genom att jag kollar ifall I I är tomt eller inte, ifall den är tom så returnar den och funktionen slutar
     */
-    public int findFirstEmptySlot()
+    public int FindFirstEmptySlot()
     {
         for (var i = 0; i < inventoryLength; i++)
         {

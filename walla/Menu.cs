@@ -16,7 +16,7 @@ public static class Menu
         Raylib.DrawText("C debug inventory", 50, 450, 30, Color.BLACK);
         Raylib.DrawText("ESC to exit", 50, 400, 30, Color.BLACK);
         Raylib.DrawRectangle((int)StartMenu.ControlsButton.x, (int)StartMenu.ControlsButton.y, (int)StartMenu.ControlsButton.width, (int)StartMenu.ControlsButton.height, Color.BLACK);
-        Raylib.DrawRectangle((int)Player.MouseCursor.x, (int)Player.MouseCursor.y, (int)Player.MouseCursor.width, (int)Player.MouseCursor.height, Color.BLACK);
+        Raylib.DrawRectangle((int)Player.mouseCursor.x, (int)Player.mouseCursor.y, (int)Player.mouseCursor.width, (int)Player.mouseCursor.height, Color.BLACK);
         }
         if (Scene == "Controls")
         {

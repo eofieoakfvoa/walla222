@@ -20,7 +20,7 @@ public class Map
         {
             for (var y = 0; y < MapSize; y++)
             {
-                Cell cellAdd = tiles(x, y);
+                Cell cellAdd = Tiles(x, y);
                 gridCellsList.Add(cellAdd);
                 cellAdd.Position = new Rectangle(x * CellSize, y * CellSize, CellSize, CellSize);
                 gridCellsDictionary.Add(new Vector2(x,y), cellAdd);
@@ -31,7 +31,7 @@ public class Map
     tänkte att det skulle va bra att försöka göra så att mapen är customizable, sen märkte jag att det nog inte är 
     det viktigaste för mig just nu. så allt det här gör är att byter ut alla celler till gräs
     */
-    public static Cell tiles(int x, int y)
+    public static Cell Tiles(int x, int y)
     {
         if (x >= 0 || y >= 0)
         {

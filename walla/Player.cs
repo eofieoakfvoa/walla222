@@ -9,7 +9,7 @@ public class Player
     public static Vector2 MousePosition = Raylib.GetMousePosition();
     public static Texture2D Sprite = Raylib.LoadTexture("Textures/Character.png");
     public static Rectangle Position = new(0,0, 40, 80);
-    public static Rectangle MouseCursor = new(0,0, 25,25);
+    public static Rectangle mouseCursor = new(0,0, 25,25);
     readonly static Settings getSettings = new();
     private static void Movement(string Direction, int Speed)
     {
@@ -25,8 +25,8 @@ public class Player
     public static void MouseCursorPosition()
     {
             MousePosition = Raylib.GetMousePosition();
-            MouseCursor.x = MousePosition.X - (MouseCursor.width/2); 
-            MouseCursor.y = MousePosition.Y - (MouseCursor.height/2); 
+            mouseCursor.x = MousePosition.X - (mouseCursor.width/2); 
+            mouseCursor.y = MousePosition.Y - (mouseCursor.height/2); 
     }
     public static void GetMovement(bool OnOff)
     {

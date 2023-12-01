@@ -11,11 +11,11 @@ public static class StartMenu
     */
     public static string buttonClick(Player Character)
     {
-        if (Raylib.CheckCollisionRecs(ControlsButton, Player.MouseCursor) && Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
+        if (Raylib.CheckCollisionRecs(ControlsButton, Player.mouseCursor) && Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
         {
             return "Controls";
         }
-        if (Raylib.CheckCollisionRecs(StartButton, Player.MouseCursor) && Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
+        if (Raylib.CheckCollisionRecs(StartButton, Player.mouseCursor) && Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
         {         
             return "Game";
         }

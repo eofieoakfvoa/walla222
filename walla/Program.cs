@@ -28,6 +28,7 @@ Seed See1d = new();
 
 Settings.Init();
 Map.Render();
+Renderer render= new();
 while (!Raylib.WindowShouldClose())
 {
     Player.MouseCursorPosition();
@@ -46,9 +47,9 @@ while (!Raylib.WindowShouldClose())
 
         if (Raylib.IsKeyReleased(KeyboardKey.KEY_C))
         {
-            InventoryManager.addToInvetory("Hoe", new Hoe(), 1);
-            InventoryManager.addToInvetory("Seed", See1d, 3);
-            InventoryManager.addToInvetory("Shovel", new Shovel(), 1);
+            InventoryManager.AddToInvetory("Hoe", new Hoe(), 1);
+            InventoryManager.AddToInvetory("Seed", See1d, 3);
+            InventoryManager.AddToInvetory("Shovel", new Shovel(), 1);
         }
 
     }
@@ -72,7 +73,7 @@ while (!Raylib.WindowShouldClose())
     }
     previousMousePos = Player.MousePosition;
 
-    Camera.cameraup(Character, Settings);
+    Camera.Cameraup(Character, Settings);
     
     float screenLeft = Player.Position.x - Settings.ScreenWidth / 2;
     float screenTop = Player.Position.y + Settings.ScreenHeight / 2;
@@ -89,7 +90,7 @@ while (!Raylib.WindowShouldClose())
     {
         Raylib.BeginMode2D(Camera.camera);
         Player.GetMovement(true);
-        if (gridIsSelected == true && Raylib.IsKeyReleased(KeyboardKey.KEY_E))
+        if (gridIsSelected && Raylib.IsKeyReleased(KeyboardKey.KEY_E))
         {
                 if (InventoryManager.InventorySlots[SelectedInventory] == "Empty")
                 {
@@ -146,7 +147,9 @@ while (!Raylib.WindowShouldClose())
             index++;
         }
         Raylib.DrawTexturePro(textureManager.LoadTexture(selectedGrid.Texture), new Rectangle(0, 0, Map.CellSize, Map.CellSize), selectedGrid.Position, new Vector2(0, 0), 0, Color.ORANGE);
-        Raylib.DrawTexturePro(Player.Sprite, new Rectangle(0, 0, 80, 80), Player.Position, new Vector2(40, 40), 0, Color.WHITE);
+
+        render.AddToQueue(() => Raylib.DrawTexturePro(Player.Sprite, new Rectangle(0, 0, 80, 80), Player.Position, new Vector2(40, 40), 0, Color.WHITE));
+        
         Raylib.DrawFPS(150, -50);
 
 

@@ -16,7 +16,7 @@ public class Camera
         camera.offset = new Vector2(Settings.ScreenWidth / 2, Settings.ScreenHeight / 2);
 
     }
-    public void cameraup(Player Character, Settings Settings)
+    public void Cameraup(Player Character, Settings Settings)
     {
         camera.target = new Vector2(Player.Position.x, Player.Position.y);
 
