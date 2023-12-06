@@ -4,14 +4,19 @@ class Renderer
 {
     private List<Action> drawQueue = new();
     private string? _currentScene;
-    public string currentScene
+    public string SetCurrentScene
     {
         get {return _currentScene;}
         set
         {
             _currentScene = value;
+            _currentScene ??= "Start";
             HardClear();
         }
+    }
+    public string GetCurrentScene()
+    {
+        return _currentScene;
     }
     private void HardClear()
     {

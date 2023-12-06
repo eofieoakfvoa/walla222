@@ -9,7 +9,7 @@ public static class StartMenu
     /*
     jag kollar ifall personens mus och knappen collidar då ifall den klickar så skickar den tillbaka vilken scene.
     */
-    public static string buttonClick(Player Character)
+    public static string ButtonClick(Player Character)
     {
         if (Raylib.CheckCollisionRecs(ControlsButton, Player.mouseCursor) && Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
         {
