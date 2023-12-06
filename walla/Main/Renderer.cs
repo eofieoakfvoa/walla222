@@ -38,6 +38,9 @@ class Renderer
     {
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.WHITE);
+
+
+        
         Raylib.EndDrawing();
     }
 

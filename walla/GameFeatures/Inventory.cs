@@ -6,7 +6,7 @@ men två blev lättare
 */
 public class Inventory
 {
-    public Dictionary<string, items> itemsInInventory = new();
+    public Dictionary<string, Items> itemsInInventory = new();
     public Dictionary<int, string> InventorySlots = new();
     int inventoryLength = 6;
     public Inventory()
@@ -22,7 +22,7 @@ public class Inventory
     här kollar jag ifall itemet finns i dictionary ifall den finns så kollar den ifall den är stackable och lägger till ifall möjligt
     ifall den inte är med så läggs den till i dictionariet
     */
-    public void AddToInvetory(string item, items ItemData, int Amount){
+    public void AddToInvetory(string item, Items ItemData, int Amount){
         if (itemsInInventory.ContainsKey(item))
         {
             if (ItemData.Stackable == true)

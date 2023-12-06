@@ -14,11 +14,11 @@ public class Camera
         camera.zoom = (float)1.25;
         camera.rotation = 0;
         camera.offset = new Vector2(Settings.ScreenWidth / 2, Settings.ScreenHeight / 2);
-
     }
-    public void Cameraup(Player Character, Settings Settings)
+    public void FollowPlayer(Vector2 playerPosition)
     {
-        camera.target = new Vector2(Player.Position.x, Player.Position.y);
+        //Istället för seperate Cameramodes ha en function där man kan byta mellan
+        camera.target = playerPosition;
 
     }
 }

@@ -2,8 +2,6 @@
 using System.Numerics;
 using Raylib_cs;
 
-bool walking;
-
 
 Settings Settings = new();
 Camera Camera = new(Settings);
@@ -13,6 +11,7 @@ Renderer GameRenderer = new();
 
 Settings.Init();
 Map.Render();
+GameManager Game = new();
 while (!Raylib.WindowShouldClose())
 {
     Player.MouseCursorPosition();
@@ -26,7 +25,7 @@ while (!Raylib.WindowShouldClose())
     }
     else
     {
-        
+        Game.Init(Camera);
     }
 
     Raylib.EndDrawing();

@@ -25,7 +25,7 @@ public static class Menu
             Raylib.DrawRectangle((int)Player.mouseCursor.x, (int)Player.mouseCursor.y, (int)Player.mouseCursor.width, (int)Player.mouseCursor.height, Color.BLACK);
             changeScene = Player.ButtonClick(ControlsButton, "Controls");
             changeScene = Player.ButtonClick(StartButton, "Game");
-            //Controlls Knappen fungerar inte, ksk göra ett Button class som har detta inbyggt
+            //Controlls Knappen fungerar inte, ksk göra ett Button class som har detta inbyggt // Typ UIElemets class,, Som har fungerande layers i rendern, basically att For loop för varje layer, detta gör ju så den gör i ordningen
             if (changeScene != null)
             {
                 bool Parse = Enum.TryParse(changeScene, out Renderer.Scenes Result);

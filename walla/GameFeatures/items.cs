@@ -1,7 +1,7 @@
 using System;
 using Raylib_cs;
 
-public class items
+public class Items
 {
     public bool Stackable;
     public bool Placable;
@@ -11,7 +11,7 @@ public class items
     public string Texture;
     public Color color;
 }
-public class  Hoe : items
+public class  Hoe : Items
 {
     //construct
     public Hoe()
@@ -25,7 +25,7 @@ public class  Hoe : items
 
     }
 }
-public class Seed : items
+public class Seed : Items
 {
     public Seed()
     {
@@ -38,7 +38,7 @@ public class Seed : items
         
     }
 }
-public class Shovel : items
+public class Shovel : Items
 {
     public Shovel()
     {
@@ -51,7 +51,7 @@ public class Shovel : items
         
     }
 }
-public class GrassBlock : items
+public class GrassBlock : Items
 {
     public GrassBlock()
     {
