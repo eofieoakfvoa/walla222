@@ -1,5 +1,7 @@
 using Raylib_cs;
+using System.Diagnostics;
 using System.Numerics;
+using System.Runtime.InteropServices;
 /*
 Här är olika saker som player controllerar, där man kan ändra Karaktärens movement lätt och så skapar jag en rectangle för musen 
 som gör så det är lättare att selecta saker i t.ex menyer.
@@ -21,6 +23,15 @@ public class Player
         {
             Position.y += Speed;
         }
+    }
+    public static string? ButtonClick(Rectangle hitBox, string ReturnName)
+    {
+        if (Raylib.CheckCollisionRecs(hitBox, mouseCursor) && Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
+        {
+            Console.WriteLine(ReturnName);
+            return ReturnName;
+        }
+        return null;
     }
     public static void MouseCursorPosition()
     {

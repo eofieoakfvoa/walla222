@@ -2,45 +2,42 @@ using Raylib_cs;
 
 class Renderer
 {
-    private List<Action> drawQueue = new();
-    private string? _currentScene;
-    public string SetCurrentScene
+    public enum Scenes
     {
-        get {return _currentScene;}
+        Game,
+        StartMenu,
+        Controls,
+    }
+    private static Scenes? _currentScene = Scenes.StartMenu;
+    public static Scenes SetCurrentScene
+    {
+        get {return (Scenes)_currentScene;}
         set
         {
             _currentScene = value;
-            _currentScene ??= "Start";
-            HardClear();
+            _currentScene ??= Scenes.StartMenu;
+            //Clear här ifall jag orkar fixa ett bättre render system
         }
     }
-    public string GetCurrentScene()
+    public static Scenes GetCurrentScene()
     {
-        return _currentScene;
+        return (Scenes)_currentScene;
     }
+
+    //--Under Fungerar Inte Än--//
     private void HardClear()
     {
-        foreach (Action drawRequest in drawQueue)
-        {
-            drawQueue.Remove(drawRequest);   
-        }
     }
-    public void AddToQueue(Action Add)
+    public void AddToQueue()
     {
-        drawQueue.Add(Add);
     }
-    public void RemoveFromQueue(Action remove)
+    public void RemoveFromQueue()
     {
-        drawQueue.Remove(remove);
     }
     public void Draw()
     {
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.WHITE);
-        foreach (var item in drawQueue)
-        {
-            item.Invoke();
-        }
         Raylib.EndDrawing();
     }
 
