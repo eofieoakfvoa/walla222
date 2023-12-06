@@ -25,6 +25,7 @@ public static class Menu
             Raylib.DrawRectangle((int)Player.mouseCursor.x, (int)Player.mouseCursor.y, (int)Player.mouseCursor.width, (int)Player.mouseCursor.height, Color.BLACK);
             changeScene = Player.ButtonClick(ControlsButton, "Controls");
             changeScene = Player.ButtonClick(StartButton, "Game");
+            //Controlls Knappen fungerar inte, ksk göra ett Button class som har detta inbyggt
             if (changeScene != null)
             {
                 bool Parse = Enum.TryParse(changeScene, out Renderer.Scenes Result);

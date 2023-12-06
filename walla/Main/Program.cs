@@ -23,7 +23,10 @@ while (!Raylib.WindowShouldClose())
     if(Scene == Renderer.Scenes.Controls || Scene == Renderer.Scenes.StartMenu)
     {
         Menu.Draw(Scene);
-
+    }
+    else
+    {
+        
     }
 
     Raylib.EndDrawing();
