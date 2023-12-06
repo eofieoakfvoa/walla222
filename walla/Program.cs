@@ -1,9 +1,6 @@
 ﻿using System.Numerics;
 using Raylib_cs;
-/*
-Förlåt för sent inlämmnad trodde idag (Fredag) var sista dagen att arbeta,
-Program.cs filen är där jag gör så att funktioner används när de ska användas, jag skulle dock kunna dra ner längden på koden
-*/
+
 bool walking;
 
 Player Character = new();
@@ -117,7 +114,6 @@ while (!Raylib.WindowShouldClose())
                     Map.gridCellsList[selectedGridIndex] = Newtile;
                     //här byter jag ut cellen mot den nya
                 }
-
         }
         int index = 0;
 
@@ -149,7 +145,6 @@ while (!Raylib.WindowShouldClose())
         Raylib.DrawTexturePro(textureManager.LoadTexture(selectedGrid.Texture), new Rectangle(0, 0, Map.CellSize, Map.CellSize), selectedGrid.Position, new Vector2(0, 0), 0, Color.ORANGE);
 
         render.AddToQueue(() => Raylib.DrawTexturePro(Player.Sprite, new Rectangle(0, 0, 80, 80), Player.Position, new Vector2(40, 40), 0, Color.WHITE));
-        
         Raylib.DrawFPS(150, -50);
 
 
