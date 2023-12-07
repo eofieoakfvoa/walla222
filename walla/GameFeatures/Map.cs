@@ -1,42 +1,69 @@
 using System;
+using System.Diagnostics;
 using System.Numerics;
 using Raylib_cs;
 
 public class Map
 {
     //Cellsize = xPx x yPx, Mapsize = antal cells, Mapsize * cellsize = pixel width pixel height
-    public static List<Cell> gridCellsList = new();
-    public static Dictionary<Vector2, Cell> gridCellsDictionary = new();
+    public static List<Chunk> activeChunks = new();
+    public static Dictionary<Vector2, Chunk> chunkDictionary = new();
     public static int MapSize = 100;
     public static int CellSize = 32;
+    public static int chunkSize = 32;
+    public static int renderDistance = 32;
+    public static Vector2 playerChunk; 
 
     public static void Render()
     {
-        /*
-        den gör 2 styckna for loopar för x och y, den börjar med x=0, sen utifrån det så gör den antal int i Mapsize 
-        till Y sen när den har gjort det så byter den till nästa x
-        */
-        for (var x = 0; x < MapSize; x++)
+        playerChunk = new((int)Player.Position.x / chunkSize * chunkSize, (int)Player.Position.y / chunkSize * chunkSize);
+        
+        for (int x = (int)(playerChunk.X - renderDistance); x <= playerChunk.X + renderDistance; x += chunkSize)
         {
-            for (var y = 0; y < MapSize; y++)
+            for (int y = (int)(playerChunk.Y - renderDistance); y < playerChunk.Y + renderDistance; y += chunkSize)
             {
-                Cell cellAdd = Tiles(x, y);
-                gridCellsList.Add(cellAdd);
-                cellAdd.Position = new Rectangle(x * CellSize, y * CellSize, CellSize, CellSize);
-                gridCellsDictionary.Add(new Vector2(x,y), cellAdd);
+                Vector2 position = new(x, y);
+                GetChunk(position);
             }
         }
+
     }
-    /*
-    tänkte att det skulle va bra att försöka göra så att mapen är customizable, sen märkte jag att det nog inte är 
-    det viktigaste för mig just nu. så allt det här gör är att byter ut alla celler till gräs
-    */
-    public static Cell Tiles(int x, int y)
+    public static void GetChunk(Vector2 Position)
     {
-        if (x >= 0 || y >= 0)
+        if (!chunkDictionary.ContainsKey(Position))
         {
-            return new Grass();
+            GenerateChunk(Position);
         }
-        return new Cell();
+        else
+        {
+            Chunk chunk = chunkDictionary[Position];
+            activeChunks.Add(chunk);
+        }
     }
+    private static void GenerateChunk(Vector2 Position)
+    {
+        Chunk addedChunkk = new()
+        {
+            chunkPosition = Position
+        };
+        getTiles(addedChunkk);
+
+    }
+    private static void getTiles(Chunk addToChunk)
+    {
+        for (int x = 0; x < 16; x++)
+        {
+            for (int y = 0; y < 16; y++)
+            {
+                Cell newTile = new()
+                {
+                    Position = new Vector2((int)addToChunk.chunkPosition.X + x, addToChunk.chunkPosition.Y + y)
+                    //Få texturen och egenskaper
+                };
+                addToChunk.cellsInChunk.Add(newTile);
+            }            
+        }
+        Debug.WriteLine(addToChunk.cellsInChunk.Count);
+    }
+
 }

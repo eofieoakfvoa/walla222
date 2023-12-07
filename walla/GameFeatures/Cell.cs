@@ -1,5 +1,11 @@
+using System.Numerics;
 using Raylib_cs;
+public class Chunk
+{
+    public List<Cell> cellsInChunk = new();
+    public Vector2 chunkPosition;
 
+}
 public class Cell
 {
     public bool Walkable;
@@ -8,7 +14,7 @@ public class Cell
     public bool interactable;
     public string Texture = "Textures/black.png";
 
-    public Rectangle Position;
+    public Vector2 Position;
 
     /*
     <T> är något man skriver in när man kallar functionen dock så i det här fallet står det where T : Cell, new().

@@ -13,9 +13,5 @@ class GameManager
     }
     private void DrawMap()
     {
-        foreach(Cell grid in Map.gridCellsList)
-        {
-            
-        }
     }
 }
