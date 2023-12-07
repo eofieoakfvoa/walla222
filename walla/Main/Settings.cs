@@ -21,6 +21,7 @@ public class Settings
     {
         
     }
+    //Numerna enums
     public int walkUp = 87;
     public int walkLeft = 65;
     public int walkDown = 83;
